@@ -1,0 +1,115 @@
+# EmiliaLehto.github.io
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+<div id="about">
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<head> 
+<link href="https://fonts.googleapis.com/css?family=Orbitron|Ropa+Sans" rel="stylesheet">
+<h1> IN DATA WE TRUST
+</h1>
+</head>
+<body>
+<div class="container"> 
+<h3>Did you know that 90% of the data in the world today was created in the last two years? </h3>
+<h3>Around the world, companys and organizations are creating more data every day, yet most are struggling to benefit from it. The US alone will face a shortage of 150,000+ data analysts and an additional 1.5 million data-savvy managers.
+</h3>
+<h3> According to Harvard Business Review Data Scientist is the Sexiest Job of the 21st Century.
+<img src="https://www.ukko.fi/kuvat2/kasvuhakkeri.png">
+<h2> "Data is the new Oil" -Ann Winblad </h3>
+<h3>We are in a digital economy where data is more valuable than ever. It is the key to the smooth functionality of everything from the government to local companies. When your business is growing, more and more people have opinions about which steps need to be taken. It helps to work with a 'good data beats opinion' philosophy. Almost everything can be tested, measured and improved. If you can measure it, you can improve it. </h3> 
+<h3> -Joris Toonders, Wired Magazine- </h3>
+<h2> Who are these Data Jedis?</h2>
+<img src="Jobs-of-the-future.png"> 
+<div class="panel panel-Data Scientist"> 
+<h3> <font color="red"> DATA SCIENTIST </font> </h3> 
+<h4>It is generally expected that data scientists are able to work with various elements of mathematics, statistics and computer science. A Data Scientist will be able to take data science projects from end-to-end. </h4>
+<lu> Skills </lu>
+<li> Mathematics</li>
+<li> Programming </li>
+<li> Statistics </li>
+<li> Analytics </li> </div>
+<div class="panel panel-Data Analyst"> 
+<h3> <font color="red"> DATA ANALYST </font> </h3> 
+<h4> Data analysts collect, process and perform statistical analyses of data. Their skills may not be as advanced as data scientists (e.g. they may not be able to create new algorithms), but their goals are the same - to discover how data can be used to answer questions and solve problems. </h4>
+<lu> Skills </lu>
+<li> Statistics </li>
+<li> Analytics </li>
+<li> Communication </li>
+<li> Business Knowledge </li>
+</div>
+<div class="panel panel-Growth Hacker"> 
+<h3> <font color="red"> GROWTH HACKER </font> </h3> 
+<h4> Growth hackers are a hybrid of marketer and coder, one who looks at the traditional question of "How do I get customers for my product"? and answers with A/B tests, landing pages, viral factor, email deliverability, and Open Graph. While driven by data and moving metrics, Growth Hackers are also creative problem solvers.</h4>
+<lu> SKILLS </lu>
+<li> Statistics </li>
+<li> Programming </li>
+<li> Database querying/SQL </li>
+<li> Web Scraping </li>
+<li> A/B Testing </li>
+<li> Exel Modeling </li>
+<li> Analytics </li>
+</div>
+<div class="panel panel-Data Engineer">
+<h3> <font color="red"> DATA ENGINEER </font> </h3> 
+<h4> The data engineer gathers and collects the data, stores it, does batch processing or real-time processing on it, and serves it via an API to a data scientist who can easily query it. They are typically focused on coding and cleaning up data sets, and implementing requests coming from Data Scientists.
+ </h4> 
+<lu> SKILLS </lu>
+<li> Programming</li>
+<li> Mathematics </li>
+<li> Big Data </li>
+</div>
+<div class="panel panel-UX Researcher"> 
+<h3> <font color="red"> UX RESEARCHER </font> </h3>
+<h4>A UX researcher is the champion of a user's needs. The goal of a researcher is to answer the twin questions of "Who are our users?" and "What do our users want?" Typically, this role entails interviewing users, researching market data, and gathering findings. </h4>
+<lu> SKILLS
+<li> Statistics</li>
+<li> Analysis </li>
+<li> User Testing </li>
+<li> Reporting </li>
+</div>
+<div class="panel panel- Product Manager"> 
+<h3> <font color="red"> PRODUCT MANAGER </font> </h3>  
+<h4> The responsibility of a product manager depends on their context within an organization. In some cases a product manager will be responsible for launching a new product, in other cases they will be responsible for evolving an established one.</h4>
+<lu>SKILLS </lu>
+<li> Database querying/SQL </li>
+<li> Analytics </li>
+<li> A/B Testing </li>
+<li> Basic Coding </li>
+<li> Interactive Prototyping </li>
+</div>
+<h2> <font color="red"> Average Entry-Level Salaries in USD</font> </h2>
+<div class="ct-chart"> </div>
+<script type="text/javascript">
+new Chartist.Bar('.ct-chart', {
+  labels: ['Data Scientist', 'Data Analytist', 'Growth Hacker', 'Data Engineer', 'UX Researcher', 'Product Manager'],
+  series: [
+    [7164, 4349, 5343, 5500, 6204, 6755 ]
+  ]
+}, {
+  seriesBarDistance: 10,
+  reverseData: true,
+  horizontalBars: true,
+  axisY: {
+    offset: 70
+  }
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-84085534-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</div id=about>
+</lu>
+</div>
+</body>
+</html>
