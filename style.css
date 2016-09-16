@@ -1,0 +1,43 @@
+}
+body {
+	margin: 120px;
+	padding-left:20px;
+	padding-right: 20px;
+	border: 10px;
+
+	font-family: 'Ropa Sans', sans-serif;
+	font-size: 20px;
+	background-image: url("cloud1.jpg");
+	background-attachment: fixed;
+	     }
+	     img{
+	     	padding-top: 20px;
+	     }
+	 img.displayed    {
+	 	height: 500px;
+	 	width: 700px;
+	 	margin-left: auto;
+	 	margin-right: auto;
+	 	padding-top: 100px;
+
+	 }
+
+	
+	.panel {
+		display: inline-block;
+		vertical-align: top; 
+		width: 32%
+
+		}
+	h2	{
+		text-align: center;
+		
+	}
+
+ .ct-chart{
+ 	height: 500px;
+ 	width: 600px;
+ 	margin-top: 50px;
+ 	margin-left: 200px;
+ }
+	
