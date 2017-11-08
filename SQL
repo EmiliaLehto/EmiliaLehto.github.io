@@ -174,3 +174,17 @@ GROUP BY
 ORDER BY
   1;
 
+
+100 MOST STREAMED TRACKS WITH TABLET
+
+SELECT
+  uri AS Track,
+  COUNT(1) AS count
+FROM
+  platform_end_content.platform_end_content_20171107
+WHERE
+  device_platform.type ="tablet"
+GROUP BY
+  1
+ORDER BY
+ 2 desc LIMIT 100;
