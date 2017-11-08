@@ -1,0 +1,176 @@
+Counting all the specific device types:
+
+SELECT
+  device_type,
+  COUNT(1) AS count
+FROM
+  device_end_content.device_end_content_30d_aggregate_20171104
+GROUP BY
+  1
+ORDER BY
+  2 DESC;
+
+Device models etc..
+
+SELECT
+ device_brand, COUNT (*) AS Brand,
+  device_type,
+  device_model, COUNT (*) AS Model,
+ device_os,COUNT(*) AS Os 
+FROM
+  device_end_content.device_end_content_30d_aggregate_20171104
+WHERE
+  device_type = "tablet"
+GROUP BY
+  device_type, device_model, device_brand, device_os;
+
+More simple version:
+
+SELECT
+ device_brand AS Brand,
+ device_os AS Os,
+ COUNT(1) AS count
+FROM
+  device_end_content.device_end_content_30d_aggregate_20171104
+WHERE
+  device_type = "tablet"
+GROUP BY
+  1,2;
+
+
+
+
+
+
+
+
+Count how many users only listen to spotify on tablet:
+(Standard SQL Dialect)
+
+WITH
+  user_categories AS (
+  SELECT
+    user_id,
+    IFNULL(LOGICAL_OR(device_type= 'tablet'),
+      FALSE) AS tablet_users,
+    IFNULL(LOGICAL_OR(device_type != 'tablet'),
+      FALSE) AS other_platform_users
+  FROM
+    `device_end_content.device_end_content_30d_aggregate_20171104`
+  GROUP BY
+    1 )
+
+SELECT
+  CASE 
+    WHEN (tablet_users IS TRUE AND other_platform_users IS FALSE) THEN 'tablet_user_only'
+    WHEN (tablet_users IS FALSE AND other_platform_users IS TRUE) THEN 'other_platform_user_only'
+    WHEN (tablet_users IS TRUE AND other_platform_users IS TRUE) THEN 'tablet_other_user_only'
+  END AS user_category, 
+  COUNT(*) as users
+FROM
+  user_categories
+GROUP BY
+  1
+
+Free vs. Premium distribution with users using Spotify with tablet vs. other devices 
+(Standard SQL Dialect)
+
+WITH
+  user_categories AS (
+  SELECT
+  Product_type,
+    user_id,
+    IFNULL(LOGICAL_OR(device_type= 'tablet'),
+      FALSE) AS tablet_users,
+    IFNULL(LOGICAL_OR(device_type != 'tablet'),
+      FALSE) AS other_platform_users
+  FROM
+    `device_end_content.device_end_content_30d_aggregate_20171104`
+  GROUP BY
+    1,2 )
+
+SELECT
+  CASE 
+    WHEN (tablet_users IS TRUE AND other_platform_users IS FALSE) THEN 'tablet_user_only'
+    WHEN (tablet_users IS FALSE AND other_platform_users IS TRUE) THEN 'other_platform_user_only'
+    WHEN (tablet_users IS TRUE AND other_platform_users IS TRUE) THEN 'tablet_other_user_only'
+  END AS user_category,
+  product_type,
+  COUNT(*) as users
+FROM
+  user_categories
+GROUP BY
+  1,2
+
+
+All the other devices than tablet where COUNT >500
+
+SELECT
+device_type AS Device,
+  device_brand AS Brand,
+  device_os AS OS,
+  COUNT(1) as count,
+FROM
+  device_end_content.device_end_content_30d_aggregate_20171105
+WHERE
+  device_type != 'tablet' 
+GROUP BY
+  1,
+  2,3
+HAVING
+  COUNT(1) > 500
+
+From above query
+Choosing everything else than tablet:
+WHERE
+  device_type != 'tablet' 
+HAVING COUNT(1) >500 needs to come after WHERE cause it can’t count before the table is ready.
+
+
+
+
+
+
+How to get date and count events
+
+SELECT
+  date,
+  COUNT(*) as count
+FROM
+  `business-critical-data.end_content_daily_aggregate.end_content_daily_aggregate_*`
+WHERE
+  _TABLE_SUFFIX BETWEEN '20171101' AND '20171107' 
+  AND reporting_country = "GB" 
+  AND client_type ="tablet"
+GROUP BY
+  1
+ORDER BY
+  1 ASC
+
+
+Different version of the query above:
+How to convert weekdays from dates
+
+SELECT
+  DAYOFWEEK(date) AS weekday,
+  CASE
+    WHEN DAYOFWEEK(date) = 1 THEN 'sunday'
+    WHEN DAYOFWEEK(date) = 2 THEN 'monday'
+    WHEN DAYOFWEEK(date) = 3 THEN 'tuesday'
+    WHEN DAYOFWEEK(date) = 4 THEN 'wednesday'
+    WHEN DAYOFWEEK(date) = 5 THEN 'thursday'
+    WHEN DAYOFWEEK(date) = 6 THEN 'friday'
+    WHEN DAYOFWEEK(date) = 7 THEN 'saturday'
+    ELSE NULL
+  END AS weekday_name,
+  COUNT(*) AS count
+FROM
+  TABLE_DATE_RANGE([business-critical-data:end_content_daily_aggregate.end_content_daily_aggregate_], TIMESTAMP('20171101'), TIMESTAMP('20171107'))
+WHERE
+  reporting_country = "GB"
+  AND client_type ="tablet"
+GROUP BY
+  1,2
+ORDER BY
+  1;
+
