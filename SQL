@@ -188,3 +188,26 @@ GROUP BY
   1
 ORDER BY
  2 desc LIMIT 100;
+ 
+
+AMOUNT OF TABLET USERS PER COUNTRY (on a speficic day)
+ 
+ SELECT
+COUNT (user_id) as count,
+count(1) as count_v2,
+reporting_country
+FROM
+  (
+    SELECT
+      reporting_country,
+      user_id,
+      COUNT(1) AS count
+    FROM
+      platform_end_content.platform_end_content_20171107
+    WHERE
+      device_platform.type ="tablet" --and ms_played >= 30000
+
+    GROUP BY
+      1,2
+  )
+GROUP BY 3
