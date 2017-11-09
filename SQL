@@ -44,7 +44,7 @@ GROUP BY
 
 
 
-Count how many users only listen to spotify on tablet:
+Count how many users only listen to # on tablet:
 (Standard SQL Dialect)
 
 WITH
@@ -72,7 +72,7 @@ FROM
 GROUP BY
   1
 
-Free vs. Premium distribution with users using Spotify with tablet vs. other devices 
+Free vs. Premium distribution with users using # with tablet vs. other devices 
 (Standard SQL Dialect)
 
 WITH
